@@ -7,7 +7,7 @@ Shape Version=11.00
 Screen=1536,864
 MCAPVersion=12.2.0.5
 Key ID=Demo
-NLCnt=54
+NLCnt=55
 TXCnt=1
 
 [shapedef]
@@ -48,6 +48,18 @@ Line=0,0,12,0
 Line=12,-8,12,8
 Line=18,-4,18,4
 Line=24,0,24,0
+
+[shapedef]
+Name=Isource.Root
+Ellipse=-12,12,12,36
+FColor=None
+Line=0,0,0,24
+PolyClosed=3
+PolyLine=-4,24
+PolyLine=4,24
+PolyLine=0,32
+Line=0,32,0,48
+Current=16,16,16,32
 
 [shapedef]
 Name=NPN
@@ -99,6 +111,10 @@ Line=22,2,22,4
 Line=22,4,24,6
 
 [shapedef]
+Name=SPICE_I
+Root="Isource.Root",0,0,0
+
+[shapedef]
 Name=Vsource.root
 Line=0,0,12,0
 Line=36,0,48,0
@@ -125,7 +141,7 @@ Name=Resistor
 Definition=Resistor
 Shape=Resistor
 Mask=7169
-Used=274
+Used=278
 memo=Resistor
 Label Offset=18,6,8,11
 PinCnt=2
@@ -163,35 +179,47 @@ Name=Ground
 Definition=Ground
 Shape=Ground
 Mask=1793
-Used=409
+Used=412
 memo=Ground
 Label Offset=0,0,0,0
 PinCnt=1
 Pin="PinA",0,0,-3,-7
 
 [compdef]
-Name=Sine Source
-Definition=Sine source
-Shape=Sine_Source
-Mask=4864
-Used=18
-memo=Sine Source
-Label Offset=18,12,15,12
+Name=Current Source
+Definition=ISpice
+Shape=SPICE_I
+Mask=6145
+Used=5
+memo=Current Source
+Label Offset=15,12,-29,12
 PinCnt=2
-Pin="Plus",6,0,-6,-6
-Pin="Minus",0,0,-19,-6
+Pin="Plus",0,0,8,11
+Pin="Minus",0,6,8,3
 
 [compdef]
 Name=Capacitor
 Definition=Capacitor
 Shape=Capacitor
 Mask=7425
-Used=73
+Used=74
 memo=Capacitor
 Label Offset=16,12,12,12
 PinCnt=2
 Pin="Plus",6,0,-3,-5
 Pin="Minus",0,0,-14,-5
+
+[compdef]
+Name=Sine Source
+Definition=Sine source
+Shape=Sine_Source
+Mask=4864
+Used=19
+memo=Sine Source
+Label Offset=18,12,15,12
+PinCnt=2
+Pin="Plus",6,0,-6,-6
+Pin="Minus",0,0,-19,-6
 
 [Circuit]
 Window Placement=2,3, -1,-1, -8,-31, 0,0,1315,467
@@ -224,7 +252,7 @@ Show Grid Text=True
 
 [Comp]
 Name=Battery
-Px=248,400
+Px=216,400
 Rot=5
 
 [Attr]
@@ -242,11 +270,11 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=248,352,296,352
+Pxs=216,352,264,352
 
 [Comp]
 Name=Battery
-Px=224,176
+Px=192,176
 Rot=5
 
 [Attr]
@@ -264,11 +292,11 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=224,128,296,128
+Pxs=192,128,264,128
 
 [Comp]
 Name=Resistor
-Px=296,192
+Px=264,192
 Rot=5
 
 [Attr]
@@ -278,7 +306,7 @@ Style=8192
 
 [Attr]
 ON=7,-33,RESISTANCE
-V=33k
+V=20k
 Style=8192
 
 [Attr]
@@ -286,14 +314,14 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=296,128,296,144
+Pxs=264,128,264,144
 
 [Wire]
-Pxs=296,128,360,128
+Pxs=264,128,328,128
 
 [Comp]
 Name=NPN
-Px=272,216
+Px=240,216
 
 [Attr]
 ON=25,-6,PART
@@ -310,7 +338,7 @@ V=TO-92
 
 [Comp]
 Name=NPN
-Px=384,216
+Px=352,216
 Rot=6
 
 [Attr]
@@ -328,7 +356,7 @@ V=TO-92
 
 [Comp]
 Name=Resistor
-Px=360,192
+Px=328,192
 Rot=5
 
 [Attr]
@@ -338,7 +366,7 @@ Style=8192
 
 [Attr]
 ON=7,-33,RESISTANCE
-V=33k
+V=20k
 Style=8192
 
 [Attr]
@@ -346,17 +374,17 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=360,128,360,144
+Pxs=328,128,328,144
 
 [Wire]
-Pxs=360,128,440,128
+Pxs=328,128,408,128
 
 [Wire]
-Pxs=296,240,360,240
+Pxs=264,240,328,240
 
 [Comp]
 Name=PNP
-Px=416,200
+Px=384,200
 
 [Attr]
 ON=27,-6,PART
@@ -373,7 +401,7 @@ V=TO-92
 
 [Comp]
 Name=Resistor
-Px=440,176
+Px=408,176
 Rot=5
 
 [Attr]
@@ -383,7 +411,7 @@ Style=8192
 
 [Attr]
 ON=10,-29,RESISTANCE
-V=3.4k
+V=2k
 Style=8192
 
 [Attr]
@@ -391,28 +419,28 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=440,128,560,128
+Pxs=408,128,528,128
 
 [Wire]
-Pxs=360,200,408,200
+Pxs=328,200,376,200
 
 [Wire]
-Pxs=360,192,360,200
+Pxs=328,192,328,200
 
 [Comp]
 Name=Ground
-Px=384,216
+Px=352,216
 Rot=7
 
 [Wire]
-Pxs=440,224,440,352
+Pxs=408,224,408,352
 
 [Wire]
-Pxs=440,352,560,352
+Pxs=408,352,528,352
 
 [Comp]
 Name=PNP
-Px=536,200
+Px=504,200
 
 [Attr]
 ON=27,-6,PART
@@ -429,7 +457,7 @@ V=TO-92
 
 [Comp]
 Name=Resistor
-Px=560,176
+Px=528,176
 Rot=5
 
 [Attr]
@@ -439,7 +467,7 @@ Style=8192
 
 [Attr]
 ON=10,-29,RESISTANCE
-V=230
+V=130
 Style=8192
 
 [Attr]
@@ -447,20 +475,20 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=480,200,536,200
+Pxs=448,200,504,200
 
 [Wire]
-Pxs=560,128,688,128
+Pxs=528,128,656,128
 
 [Wire]
-Pxs=440,176,480,176
+Pxs=408,176,448,176
 
 [Wire]
-Pxs=480,176,480,200
+Pxs=448,176,448,200
 
 [Comp]
 Name=Resistor
-Px=560,304
+Px=528,304
 Rot=5
 
 [Attr]
@@ -470,7 +498,7 @@ Style=8192
 
 [Attr]
 ON=12,-30,RESISTANCE
-V=14.2k
+V=6k
 Style=8192
 
 [Attr]
@@ -478,23 +506,23 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=560,224,560,232
+Pxs=528,224,528,232
 
 [Wire]
-Pxs=560,304,560,352
+Pxs=528,304,528,352
 
 [Wire]
-Pxs=560,352,688,352
+Pxs=528,352,656,352
 
 [Wire]
-Pxs=560,232,664,232
+Pxs=528,232,632,232
 
 [Wire]
-Pxs=560,232,560,248
+Pxs=528,232,528,248
 
 [Comp]
 Name=NPN
-Px=664,232
+Px=632,232
 
 [Attr]
 ON=37,-17,PART
@@ -510,27 +538,150 @@ ON=37,25,PACKAGE
 V=TO-92
 
 [Wire]
-Pxs=688,128,688,208
+Pxs=656,128,656,208
 
 [Wire]
-Pxs=688,304,688,352
-
-[Wire]
-Pxs=688,256,792,256
+Pxs=656,304,656,352
 
 [Comp]
 Name=Ground
-Px=224,176
+Px=192,176
 Rot=7
 
 [Comp]
 Name=Ground
-Px=248,400
+Px=216,400
 Rot=7
+
+[Wire]
+Pxs=376,200,376,248
+
+[Wire]
+Pxs=376,248,424,248
+
+[Wire]
+Pxs=376,200,384,200
+
+[Wire]
+Pxs=472,248,528,248
+
+[Wire]
+Pxs=528,248,528,256
+
+[Wire]
+Pxs=264,240,264,272
+
+[Wire]
+Pxs=264,320,264,352
+
+[Wire]
+Pxs=264,352,408,352
+
+[Comp]
+Name=Current Source
+Px=264,272
+
+[Attr]
+ON=15,12,PART
+V=I1
+Style=8192
+
+[Attr]
+ON=15,26,VALUE
+V=DC 0.17m AC 0 0 
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Attr]
+ON=0,0,SMOOTHING
+V=N
+Style=256
+
+[Attr]
+ON=0,0,Saved_PulseS
+V=N
+Style=256
+
+[Attr]
+ON=0,0,FRACTION
+V=.2
+Style=256
+
+[Attr]
+ON=0,0,Saved_PulseF
+V=.2
+Style=256
+
+[Attr]
+ON=0,0,Saved_Pulse
+V=DC 0 AC 1 0 Pulse 0 5 100n 10n 10n 400n 1u
+Style=256
+
+[Attr]
+ON=0,0,Saved_None
+V=DC 0.17m AC 0 0 
+Style=256
+
+[Comp]
+Name=Current Source
+Px=656,256
+
+[Attr]
+ON=15,12,PART
+V=I2
+Style=8192
+
+[Attr]
+ON=15,26,VALUE
+V=DC 10m AC 0 0 
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Attr]
+ON=0,0,Saved_None
+V=DC 10m AC 0 0 
+Style=256
+
+[Comp]
+Name=Capacitor
+Px=472,248
+Rot=6
+
+[Attr]
+ON=-28,27,PART
+V=C1
+Style=8192
+
+[Attr]
+ON=-36,11,CAPACITANCE
+V=250p
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=152,216,240,216
+
+[Wire]
+Pxs=656,256,688,256
+
+[Wire]
+Pxs=688,192,688,256
+
+[Wire]
+Pxs=688,192,760,192
 
 [Comp]
 Name=Sine Source
-Px=168,288
+Px=152,264
 Rot=3
 
 [Attr]
@@ -539,108 +690,26 @@ V=Vin
 Style=8192
 
 [Attr]
-ON=-72,-40,MODEL
-V=GENERAL
+ON=-50,-40,MODEL
+V=1MHZ
 
 [Attr]
 ON=0,0,PACKAGE
 V
-
-[Wire]
-Pxs=168,216,168,240
-
-[Wire]
-Pxs=168,216,272,216
 
 [Comp]
 Name=Ground
-Px=168,288
+Px=152,264
 Rot=7
 
-[Wire]
-Pxs=408,200,408,248
-
-[Wire]
-Pxs=408,248,456,248
-
-[Wire]
-Pxs=408,200,416,200
-
-[Wire]
-Pxs=504,248,560,248
-
-[Wire]
-Pxs=560,248,560,256
-
-[Comp]
-Name=Resistor
-Px=296,320
-Rot=5
-
-[Attr]
-ON=18,-20,PART
-V=R4
-Style=8192
-
-[Attr]
-ON=18,-34,RESISTANCE
-V=120k
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Wire]
-Pxs=296,240,296,272
-
-[Wire]
-Pxs=296,320,296,352
-
-[Wire]
-Pxs=296,352,440,352
-
-[Comp]
-Name=Resistor
-Px=688,304
-Rot=5
-
-[Attr]
-ON=-26,-31,PART
-V=R5
-Style=8192
-
-[Attr]
-ON=9,-26,RESISTANCE
-V=1.8k
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Capacitor
-Px=504,248
-Rot=6
-
-[Attr]
-ON=12,-26,PART
-V=C1
-Style=8192
-
-[Attr]
-ON=12,-40,CAPACITANCE
-V=175p
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
+[Node Offsets]
+Section=0
+;Node,Page,GridX,GridY,OffsetX,OffsetY
+Offset=4,0,240,216,-21,64
 
 [Grid Text]
 Text="Vout"
-Px=792,256
+Px=760,192
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -654,7 +723,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=0.66666666666666663
+Scale=1
 GridUser=10
 ShapeGroups="Main","Euro","Polarity","Main1","Main11","Electrolytic","GroundArrow","DeMorgan"
 CalcRMS=False
@@ -842,9 +911,8 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=0,85
-Scale 3=0.66666666666666663
-Px=165,262
+Scale 3=1
+Px=956,297
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -908,7 +976,7 @@ Type=Text
 Print=False
 Enable=True
 Name=Models
-SB 0=33,36
+SB 0=27,45
 Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
 Comment Color=#008000
 WinBackGround Color=#FFFFFF
@@ -976,6 +1044,15 @@ Text=+ VAF=100 VJC=1 VJE=805.212m VTF=10 XTF=500.004m)
 Text=*** From file C:\Users\Ronit\Desktop\New folder\library\UTILITY.LBR
 Text=*** 10MHz Sinusoidal Source
 Text=.MODEL GENERAL SIN (A=0.001 F=1k)
+Text=*** From file C:\Users\Ronit\Desktop\New folder\library\UTILITY.LBR
+Text=*** 5V Square Wave
+Text=.MODEL SQUARE PUL (P1=0 P2=0 P3=10u P4=10u P5=20u VONE=0.5 VZERO=-0.5)
+Text=*** From file C:\Users\Ronit\Desktop\New folder\library\UTILITY.LBR
+Text=*** 60HZ Sinusoidal Source
+Text=.MODEL 60HZ SIN (A=169.7 F=60)
+Text=*** From file C:\Users\Ronit\Desktop\New folder\library\UTILITY.LBR
+Text=*** 1MHz Sinusoidal Source
+Text=.MODEL 1MHZ SIN (A=1m F=1k)
 
 [InfoPage]
 InfoPage=True
@@ -1223,9 +1300,45 @@ Analysis=Transient
 Object=PTag
 EndPoint=ArrowF
 CBorder=#000080
+w=1
+AliasID1=2
+Pos=0.039749600000019099,-0.00099999739674352527,0.00024959999999999956,0.00099999626759317978
+Posm=0.0040006000000003521
+Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Format=3
+FormatY=3
+Text="PP(v(Vin),1,TSTART,TMAX)"
+
+[AObject]
+Analysis=Transient
+Object=PTag
+EndPoint=ArrowF
+CBorder=#000080
+Pos=7621.2471131639722,7253.7313432835817,10816.012317167051,7671.6417910447763
+Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Format=3
+FormatY=3
+Text="PP(v(Vs),1,TSTART,TMAX)"
+
+[AObject]
+Analysis=Transient
+Object=PTag
+EndPoint=ArrowF
+CBorder=#000080
+Pos=7621.2471131639722,7253.7313432835817,10816.012317167051,7671.6417910447763
+Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
+Format=3
+FormatY=3
+Text="PP(v(Vs),1,TSTART,TMAX)"
+
+[AObject]
+Analysis=Transient
+Object=PTag
+EndPoint=ArrowF
+CBorder=#000080
 w=0
 AliasID1=1
-Pos=0.00039660000000000313,-0.8484510755815714,0.0099155999999991674,0.70092363951558889
+Pos=0.00037360000000000258,-0.51685523692240021,0.013888599999996249,1.1236725385304003
 Posm=0.0047576177285318559
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
@@ -1277,7 +1390,7 @@ Tracker Cursor BranchInfo=False
 Horizontal Cursor=False
 Same Y Scales=Yes
 Enable X Scaling=True
-Enable Y Scaling=True
+Enable Y Scaling=False
 Keep X Scales The Same=True
 Number of Grids X=5
 Number of Grids Y=5
@@ -1472,7 +1585,7 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TMax=10m
+TMax=40m
 TStart=0
 TStep=0.001m
 NPts=51
@@ -1490,11 +1603,11 @@ Plt=1
 AliasID=1
 XExp=T
 YExp=v(Vout)
-XRng=0.01
-YRng=1.5,-1
+XRng=0.04
+YRng=2.4,-0.6
 Options=LINEARX,LINEARY
-Range Grid X=0.002
-Range Grid Y=0.5
+Range Grid X=0.008
+Range Grid Y=0.6
 Enable=Enable
 Line Color=#0000FF
 Text Color=#0000FF
@@ -1516,11 +1629,11 @@ Plt=1
 AliasID=2
 XExp=T
 YExp=v(Vin)
-XRng=0.01
-YRng=1.5,-1
+XRng=0.04
+YRng=2.4,-0.6
 Options=LINEARX,LINEARY
-Range Grid X=0.002
-Range Grid Y=0.5
+Range Grid X=0.008
+Range Grid Y=0.6
 Enable=Enable
 Line Color=#FF0000
 Text Color=#FF0000
@@ -1538,9 +1651,16 @@ NOFmtY=3E
 
 [WaveForm]
 Analysis=Transient
-AliasID=-1
+Plt=1
+AliasID=3
+XExp=T
+YExp=v(Vout)
+XRng=0.04
+YRng=0.0015,-0.001
 Options=LINEARX,LINEARY
-Enable=Enable
+Range Grid X=0.002
+Range Grid Y=0.0005
+Enable=Hide
 Line Color=#008000
 Text Color=#008000
 Rainbow=False
